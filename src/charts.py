@@ -55,17 +55,13 @@ def plot_drawdown(drawdown_series: pd.Series):
 
 
 def plot_benchmark_comparison(portfolio_value_df: pd.DataFrame, benchmark_series: pd.Series):
-
-    def normalize_series(series: pd.Series) -> pd.Series:
-        return 100 * series / series.iloc[0]
-
     portfolio_norm = normalize_series(portfolio_value_df["Total"])
     benchmark_norm = normalize_series(benchmark_series)
 
     comparison_df = pd.DataFrame({
         "Portfolio": portfolio_norm,
         "Benchmark": benchmark_norm
-    }).reset_index()
+    }).dropna().reset_index()
 
     fig = px.line(
         comparison_df,
@@ -80,4 +76,15 @@ def plot_benchmark_comparison(portfolio_value_df: pd.DataFrame, benchmark_series
         hovermode="x unified"
     )
 
+    return fig
+
+def plot_weights_pie(weights_df: pd.DataFrame, title="Optimized Allocation"):
+    fig = px.pie(
+        weights_df,
+        names="Ticker",
+        values="Weight",
+        title=title,
+        hole=0.35
+    )
+    fig.update_layout(template="plotly_white")
     return fig
