@@ -42,3 +42,6 @@ streamlit run app.py
 - pandas
 - numpy
 - plotly
+
+
+Market data is fetched from Yahoo Finance via yfinance.
