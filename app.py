@@ -193,7 +193,7 @@ with optimizer_tab:
         "Risk-free rate",
         min_value=0.0,
         max_value=0.10,
-        value=0.02,
+        value=0.028,
         step=0.005
     )
 

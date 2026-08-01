@@ -114,6 +114,7 @@ The Optimizer shows:
 - The tracker uses a CSV because it reads your holdings from that file.
 - The optimizer does not need a CSV; it uses the tickers you type in.
 - Optimization results are educational and based on historical data.
+- Default risk-free rate is set to be 0.028; adjust for better estimation accuracy.
 
 ## Run locally
 
