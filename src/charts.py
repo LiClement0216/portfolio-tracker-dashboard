@@ -88,3 +88,12 @@ def plot_weights_pie(weights_df: pd.DataFrame, title="Optimized Allocation"):
     )
     fig.update_layout(template="plotly_white")
     return fig
+
+def normalize_series(series: pd.Series) -> pd.Series:
+    series = series.dropna()
+    if series.empty:
+        return series
+    first_value = series.iloc[0]
+    if first_value == 0:
+        return series
+    return series / first_value * 100
